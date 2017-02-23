@@ -3,8 +3,8 @@ require ('tools.php');
 
 require ('Form.php');
 
-useDWATools;
-$form = new DWAForm($_POST);
+use DWA\Tools;
+$form = new DWA\Form($_POST);
 
 if ($form->isSubmitted())
 	{
