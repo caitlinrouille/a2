@@ -13,11 +13,11 @@
   <form action="index.php" method="post">
       <div class="form-group">
           <label for="split">Split how many ways?</label>
-          <input type="text" name="split" value="0">
+          <input type="text" name="split" required value="">
       </div>
       <div class="form-group">
           <label for="price">How much was the tab?</label>
-          <input type="text" name="price" value="0">
+          <input type="text" name="price" required value="">
       </div>
       <div class="form-group">
           <label for="service">How was the service:</label>
@@ -40,7 +40,7 @@
 
   <!--validation -->
   <div>
-    <?php if($errors): ?>
+    <?php if(isset($errors) && ($errors!=null)): ?>
       <div class="alert alert-danger">
         <?php foreach($errors as $error): ?>
             <?=$error?><br>

@@ -146,7 +146,7 @@ class Form {
         }
 
         # Set public property hasErrors as Boolean
-        $this->hasErrors = empty($errors);
+        $this->hasErrors = !empty($errors);
 
         return $errors;
 
@@ -200,7 +200,7 @@ class Form {
 	* Returns boolean if given value contains only numbers
 	*/
     private function numeric($value) {
-        return ctype_digit(str_replace(' ','', $value));
+        return !ctype_alpha(str_replace(' ','', $value)) && is_numeric(str_replace(' ',0, $value)); 
     }
 
 

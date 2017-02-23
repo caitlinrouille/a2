@@ -1,33 +1,37 @@
 <?php
+require ('tools.php');
 
-require('tools.php');
-require('Form.php');
+require ('Form.php');
 
-use DWA\Tools;
+useDWATools;
+$form = new DWAForm($_POST);
 
-$form = new DWA\Form($_GET);
+if ($form->isSubmitted())
+	{
 
-
-if($form->isSubmitted()) {
-$split = $_POST['split'];
-$price = $_POST['price'];
-$total = $price / $split;
-$rounded = round($total);
-
-## Validate!
-$errors = $form->validate(
-  [
-  'price' => 'required|numeric',
-]
-);
-
-
-  if(isset($_POST['roundBill'])) {
-   $results = "The total bill is $".$rounded;
-  }
-  else {
-    $results = "The total bill is $" .$total;
-  }
-} else {
-  $results = '';
-}
+	// # Validate!
+	$errors = $form->validate(['price' => 'required|numeric', 'split' => 'required|numeric']);
+	if (!$errors)
+		{
+		$split = $_POST['split'];
+		$price = $_POST['price'];
+		$total = $price / $split; // # Divide total price
+		$rounded = round($total); // # Round total price
+		if (isset($_POST['roundBill']))
+			{
+			$results = "Each person owes $" . $rounded;
+			}
+		  else
+			{
+			$results = "Each person owes $" . $total;
+			}
+		}
+	  else
+		{
+		$results = '';
+		}
+	}
+  else
+	{
+	$results = '';
+	}
