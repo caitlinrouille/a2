@@ -1,7 +1,15 @@
+/*Caitlin Rouille - a2 Assignment*/
+
+body {
+    background:#ddd;
+}
+
 .container {
     border: 2px solid #ddd;
-    width: 700px;
+    width: 445px;
     padding-bottom: 15px;
+    background:#fff;
+    border:5px solid #506d7c;
 }
 
 .mg-top-20 {
